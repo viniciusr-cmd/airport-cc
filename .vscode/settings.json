@@ -1,0 +1,9 @@
+{
+    "go.testFlags": [
+        "-v",
+        "-coverpkg=github.com/goledgerdev/airport-cc/chaincode/..."
+    ],
+    "gopls": {
+        "experimentalWorkspaceModule": true
+    }
+}
