@@ -11,26 +11,26 @@ import (
 	"github.com/goledgerdev/cc-tools/mock"
 )
 
-func TestCreateNewLibrary(t *testing.T) {
+func TestCreateNewAirport(t *testing.T) {
 	stub := mock.NewMockStub("org3MSP", new(cc.CCDemo))
 
 	expectedResponse := map[string]interface{}{
-		"@key":         "library:3cab201f-9e2b-579d-b7b2-72297ed17f49",
+		"@key":         "airport:3cab201f-9e2b-579d-b7b2-72297ed17f49",
 		"@lastTouchBy": "org3MSP",
-		"@lastTx":      "createNewLibrary",
-		"@assetType":   "library",
-		"name":         "Maria's Library",
+		"@lastTx":      "createNewAirport",
+		"@assetType":   "airport",
+		"name":         "Jobim's Airport",
 	}
 	req := map[string]interface{}{
-		"name": "Maria's Library",
+		"name": "Jobim's Airport",
 	}
 	reqBytes, err := json.Marshal(req)
 	if err != nil {
 		t.FailNow()
 	}
 
-	res := stub.MockInvoke("createNewLibrary", [][]byte{
-		[]byte("createNewLibrary"),
+	res := stub.MockInvoke("createNewAirport", [][]byte{
+		[]byte("createNewAirport"),
 		reqBytes,
 	})
 
@@ -56,7 +56,7 @@ func TestCreateNewLibrary(t *testing.T) {
 	}
 
 	var state map[string]interface{}
-	stateBytes := stub.State["library:3cab201f-9e2b-579d-b7b2-72297ed17f49"]
+	stateBytes := stub.State["airport:3cab201f-9e2b-579d-b7b2-72297ed17f49"]
 	err = json.Unmarshal(stateBytes, &state)
 	if err != nil {
 		log.Println(err)
