@@ -15,7 +15,7 @@ var Flight = assets.AssetType{
 			IsKey:    true,
 			Tag:      "code",
 			Label:    "Flight code",
-			DataType: "string",
+			DataType: "flightcode",
 			Writers:  []string{`org2MSP`, "orgMSP"}, // This means only org2 can create the asset (others can edit)
 		},
 		{
