@@ -23,7 +23,8 @@ var cnpj = assets.DataType{
 		if len(cnpj) != 14 {
 			return "", nil, errors.NewCCError("CNPJ must have 14 digits", 400)
 		}
-
+		// CPF VALIDATION
+		
 		// var vd0 int
 		// for i, d := range cnpj {
 		// 	if i >= 9 {
