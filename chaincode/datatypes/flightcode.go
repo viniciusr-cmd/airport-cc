@@ -24,38 +24,6 @@ var flightcode = assets.DataType{
 			return "", nil, errors.NewCCError("Flight Code must have 6 digits", 400)
 		}
 
-		// var vd0 int
-		// for i, d := range flightcode {
-		// 	if i >= 9 {
-		// 		break
-		// 	}
-		// 	dnum := int(d) - '0'
-		// 	vd0 += (10 - i) * dnum
-		// }
-		// vd0 = 11 - vd0%11
-		// if vd0 > 9 {
-		// 	vd0 = 0
-		// }
-		// if int(flightcode[9])-'0' != vd0 {
-		// 	return "", nil, errors.NewCCError("Invalid Flight Code", 400)
-		// }
-
-		// var vd1 int
-		// for i, d := range flightcode {
-		// 	if i >= 10 {
-		// 		break
-		// 	}
-		// 	dnum := int(d) - '0'
-		// 	vd1 += (11 - i) * dnum
-		// }
-		// vd1 = 11 - vd1%11
-		// if vd1 > 9 {
-		// 	vd1 = 0
-		// }
-		// if int(flightcode[10])-'0' != vd1 {
-		// 	return "", nil, errors.NewCCError("Invalid Flight Code", 400)
-		// }
-
 		return flightcode, flightcode, nil
 	},
 }
