@@ -19,9 +19,15 @@ var flightcode = assets.DataType{
 		flightcode = strings.ReplaceAll(flightcode, "-", "")
 		flightcode = strings.ReplaceAll(flightcode, "/", "")
 		flightcode = strings.ReplaceAll(flightcode, " ", "")
+		flightcode = strings.ToUpper(flightcode)
 
 		if len(flightcode) != 6 {
 			return "", nil, errors.NewCCError("Flight Code must have 6 digits", 400)
+		}
+
+		// First character must be a letter
+		if !strings.ContainsAny(flightcode[0:1], "ABCDEFGHIJKLMNOPQRSTUVWXYZ") {
+			return "", nil, errors.NewCCError("Flight Code must start with a letter", 400)
 		}
 
 		return flightcode, flightcode, nil
