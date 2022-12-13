@@ -32,6 +32,12 @@ var UpdateFlightAirline = tx.Transaction{
 			Description: "New airline of the flight",
 			DataType:    "->airline",
 		},
+		{
+			Tag:         "flightcode",
+			Label:       "flightcode",
+			Description: "New flightcode",
+			DataType:    "flightcode",
+		},
 	},
 	Routine: func(stub *sw.StubWrapper, req map[string]interface{}) ([]byte, errors.ICCError) {
 		flightKey, ok := req["flight"].(assets.Key)
@@ -42,7 +48,11 @@ var UpdateFlightAirline = tx.Transaction{
 		if !ok {
 			return nil, errors.WrapError(nil, "Parameter airline must be an asset")
 		}
-
+		flightcodeKey, ok := req["flightcode"].(assets.Key)
+		if !ok {
+			return nil, errors.WrapError(nil, "Parameter flightcode must be a string")
+		}
+		
 		// Returns Flight from channel
 		flightAsset, err := flightKey.Get(stub)
 		if err != nil {
@@ -57,12 +67,25 @@ var UpdateFlightAirline = tx.Transaction{
 		}
 		airlineMap := (map[string]interface{})(*airlineAsset)
 
+		// Returns flightcode from channel
+		flightcodeAsset, err := flightcodeKey.Get(stub)
+
+		if err != nil {
+			return nil, errors.WrapError(err, "failed to get asset from the ledger")
+		}
+		flightcodeMap := (map[string]interface{})(*flightcodeAsset)
+
 		updatedAirlineKey := make(map[string]interface{})
 		updatedAirlineKey["@assetType"] = "airline"
 		updatedAirlineKey["@key"] = airlineMap["@key"]
 
+		updatedflightcodeKey := make(map[string]interface{})
+		updatedflightcodeKey["@assetType"] = "flightcode"
+		updatedflightcodeKey["@key"] = flightcodeMap["@key"]
+
 		// Update data
-		flightMap["currentAirline"] = updatedAirlineKey
+		flightMap["airline"] = updatedAirlineKey
+		flightMap["flightcode"] = updatedflightcodeKey
 
 		flightMap, err = flightAsset.Update(stub, flightMap)
 		if err != nil {

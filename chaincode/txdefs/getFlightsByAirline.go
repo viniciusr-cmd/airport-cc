@@ -26,12 +26,6 @@ var GetFlightsByAirline = tx.Transaction{
 			DataType:    "string",
 			Required:    true,
 		},
-		{
-			Tag:         "limit",
-			Label:       "Limit",
-			Description: "Limit",
-			DataType:    "number",
-		},
 	},
 	Routine: func(stub *sw.StubWrapper, req map[string]interface{}) ([]byte, errors.ICCError) {
 		airlineName, _ := req["airlineName"].(string)

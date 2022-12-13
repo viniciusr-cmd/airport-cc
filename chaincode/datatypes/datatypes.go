@@ -8,4 +8,5 @@ import (
 var CustomDataTypes = map[string]assets.DataType{
 	"cnpj":       cnpj,
 	"flightcode": flightcode,
+	"icao":       icao,
 }

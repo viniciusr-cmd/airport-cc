@@ -41,18 +41,7 @@ var Airline = assets.AssetType{
 			Required: true,
 			Tag:      "ICAO",
 			Label:    "ICAO Code (International Civil Aviation Organization)",
-			DataType: "string",
-			// Validate funcion
-			Validate: func(icao interface{}) error {
-				icaoStr := icao.(string)
-				if icaoStr == "" {
-					return fmt.Errorf("ICAO must be non-empty")
-				}
-				if len(icaoStr) != 3 {
-					return fmt.Errorf("ICAO must be 3 characters long")
-				}
-				return nil
-			},
+			DataType: "icao",
 		},
 	},
 }
