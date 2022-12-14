@@ -9,4 +9,5 @@ var assetTypeList = []assets.AssetType{
 	assettypes.Airline,
 	assettypes.Flight,
 	assettypes.Airport,
+	assettypes.Aircraft,
 }
