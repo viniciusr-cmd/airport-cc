@@ -27,10 +27,31 @@ var Flight = assets.AssetType{
 			Writers:  []string{`org2MSP`, "orgMSP"}, // This means only org2 can create the asset (others can edit)
 		},
 		{
+			Required: true,
+			Tag:      "origin",
+			Label:    "Flight Origin",
+			DataType: "->airport",
+		},
+		{
+			Required: true,
+			Tag:      "destination",
+			Label:    "Flight Destination",
+			DataType: "->airport",
+		},
+		{
 			// Date property
-			Tag:      "Flight departure",
-			Label:    "Flight Departure",
+			Required: true,
+			Tag:      "Estimated flight departure",
+			Label:    "Estimated flight Departure",
 			DataType: "datetime",
+		},
+		{
+			// Status property
+			Required:     true,
+			Tag:          "Flight Status",
+			Label:        "Confirmed?",
+			DefaultValue: true,
+			DataType:     "boolean",
 		},
 	},
 }

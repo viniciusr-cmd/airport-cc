@@ -8,7 +8,7 @@ import (
 
 var txList = []tx.Transaction{
 	tx.CreateAsset,
-	tx.UpdateAsset,
+	// tx.UpdateAsset,
 	tx.DeleteAsset,
 	txdefs.CreateNewAirport,
 	txdefs.GetNumberOfFlightsFromAirport,
